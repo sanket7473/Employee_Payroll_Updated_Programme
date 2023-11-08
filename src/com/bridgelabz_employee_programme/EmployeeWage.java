@@ -6,9 +6,10 @@ public class EmployeeWage {
     public static final int Emp_Rate_Per_hour=20;
     public static final int Num_Working_Days=20;
     public static final int MAX_HRS_INA_MONTH=100;
-    public static void main(String[] args) {
+    public static int computeEmpWage()
+    {
         System.out.println("Welcome to the employee payroll programme");
-        int Emp_Hrs = 0, Emp_Wage = 0,totalEmployeeWage=0,totalEmpHrs=0,totalWorkingDays=0;
+        int Emp_Hrs = 0, Emp_Wage = 0,totalEmpHrs=0,totalWorkingDays=0;
         while(totalEmpHrs<MAX_HRS_INA_MONTH || totalWorkingDays< Num_Working_Days)
         {
             totalWorkingDays++;
@@ -27,11 +28,14 @@ public class EmployeeWage {
                     Emp_Hrs = 0;
             }
             totalEmpHrs=totalEmpHrs+Emp_Hrs;
-            Emp_Wage = Emp_Hrs * Emp_Rate_Per_hour;
-            System.out.println("Employee wage is " + Emp_Wage);
-            totalEmployeeWage=totalEmployeeWage+Emp_Wage;
-        }
-        System.out.println("Total Employee wage "+totalEmployeeWage);
-    }
+            System.out.println("Day"+totalWorkingDays+ "Employee hours"+Emp_Hrs );
 
+        }
+       int totalEmployeeWage=totalEmpHrs*Emp_Rate_Per_hour;
+        System.out.println("Total Employee wage "+totalEmployeeWage);
+        return  totalEmployeeWage;
+    }
+    public static void main(String[] args) {
+        computeEmpWage();
+}
 }
