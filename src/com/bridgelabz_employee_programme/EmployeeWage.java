@@ -4,8 +4,20 @@ public class EmployeeWage {
     public static final int Is_Full_time=1;
     public static final int Is_Part_Time=2;
     public static final int MAX_HRS_INA_MONTH=100;
+    String company;
+    int Emp_Rate_Per_hour;
+    int Num_Working_Days;
 
-    public static int computeEmpWage(String company, int Emp_Rate_Per_hour, int Num_Working_Days)
+    public  EmployeeWage( String company,
+    int Emp_Rate_Per_hour,
+    int Num_Working_Days)
+    {
+       this.company=company;
+       this.Emp_Rate_Per_hour=Emp_Rate_Per_hour;
+       this.Num_Working_Days=Num_Working_Days;
+    }
+
+    public void computeEmpWage()
     {
         System.out.println("Welcome to the employee payroll programme");
         int Emp_Wage = 0,totalEmpHrs=0,totalWorkingDays=0;
@@ -33,12 +45,24 @@ public class EmployeeWage {
         }
        int totalEmployeeWage=totalEmpHrs*Emp_Rate_Per_hour;
         System.out.println("Company name is "+company+" Total Employee wage "+totalEmployeeWage);
-        return  totalEmployeeWage;
+
+    }
+    @Override
+    public String toString() {
+        return "EmployeeWage{" +
+                "company='" + company + '\'' +
+                ", empRatePerHour=" + Emp_Rate_Per_hour +
+                ", numOfWorkingDays=" + Num_Working_Days +
+                '}';
     }
     public static void main(String[] args) {
 
-        computeEmpWage("tcs",19,23);
-        computeEmpWage("Tata",16,22);
+        EmployeeWage tcs=new EmployeeWage("Tcs",20,23);
+        tcs.computeEmpWage();
+        System.out.println(tcs);
 
+        EmployeeWage Ibm=new EmployeeWage("Ibm",25,25);
+        Ibm.computeEmpWage();
+        System.out.println(Ibm);
 }
 }
